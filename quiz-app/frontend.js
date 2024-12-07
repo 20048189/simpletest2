@@ -78,6 +78,36 @@ async function deleteQuestion(id) {
   await fetch(`${'https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/'}/${id}`, { method: "DELETE" });
   fetchQuestions();
 }
+document.getElementById("addQuestionForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const question = document.getElementById("questionInput").value;
+  const options = [
+      document.getElementById("option1Input").value,
+      document.getElementById("option2Input").value,
+      document.getElementById("option3Input").value,
+      document.getElementById("option4Input").value,
+  ];
+  const answer = parseInt(document.getElementById("answerInput").value) - 1;
+
+  const newQuestion = { question, options, answer };
+
+  fetch("/api/questions", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newQuestion),
+  })
+      .then((res) => res.json())
+      .then((data) => {
+          alert(data.message); // Show success message
+          fetchQuestions(); // Refresh the list
+      })
+      .catch((err) => {
+          console.error("Error adding question:", err);
+      });
+});
 
 // Initialize app
 fetchQuestions();
