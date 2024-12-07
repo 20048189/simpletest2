@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Quiz App</h1>
+  
+  <div id="quiz-container">
+    <form id="question-form">
+      <input type="hidden" id="question-id">
+      <label for="question-text">Question:</label>
+      <input type="text" id="question-text" placeholder="Enter your question" required>
+      <label for="answers">Options:</label>
+      <input type="text" id="answer1" placeholder="Option 1" required>
+      <input type="text" id="answer2" placeholder="Option 2" required>
+      <input type="text" id="answer3" placeholder="Option 3" required>
+      <input type="text" id="answer4" placeholder="Option 4" required>
+      <label for="correct-answer">Correct Answer (1-4):</label>
+      <input type="number" id="correct-answer" min="1" max="4" required>
+      <button type="submit">Add/Update Question</button>
+    </form>
+  </div>
+
+  <h2>Questions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Options</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="questions-table"></tbody>
+  </table>
+
+  <script src="frontend.js"></script>
+</body>
+</html>
