@@ -42,14 +42,14 @@ document.getElementById("question-form").addEventListener("submit", async (event
 
   if (id) {
     // Update question
-    await fetch(`${API_URL}/${id}`, {
+    await fetch(`${'https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/'}/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(question),
     });
   } else {
     // Add new question
-    await fetch(API_URL, {
+    await fetch('https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(question),
@@ -62,7 +62,7 @@ document.getElementById("question-form").addEventListener("submit", async (event
 
 // Edit question
 async function editQuestion(id) {
-  const response = await fetch(`${API_URL}/${id}`);
+  const response = await fetch(`${'https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/'}/${id}`);
   const question = await response.json();
   document.getElementById("question-id").value = question.id;
   document.getElementById("question-text").value = question.text;
@@ -75,7 +75,7 @@ async function editQuestion(id) {
 
 // Delete question
 async function deleteQuestion(id) {
-  await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+  await fetch(`${'https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/'}/${id}`, { method: "DELETE" });
   fetchQuestions();
 }
 
