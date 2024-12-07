@@ -72,7 +72,7 @@ app.delete("/api/questions/:id", (req, res) => {
   saveQuestions();
   res.status(204).send();
 });
-
+const PORT = process.env.PORT || 4000;
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
