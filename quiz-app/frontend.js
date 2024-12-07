@@ -5,6 +5,21 @@ async function fetchQuestions() {
   const response = await fetch('https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/');
   const questions = await response.json();
   displayQuestions(questions);
+  fetch("/api/questions")
+  .then((res) => res.json())
+  .then((data) => {
+      const questionsList = document.getElementById("questionsList");
+      questionsList.innerHTML = ""; // Clear the list
+
+      data.forEach((q, index) => {
+          const questionItem = document.createElement("li");
+          questionItem.textContent = `${index + 1}. ${q.question} (Options: ${q.options.join(", ")})`;
+          questionsList.appendChild(questionItem);
+      });
+  })
+  .catch((err) => {
+      console.error("Error fetching questions:", err);
+  });
 }
 
 // Display questions in the table
