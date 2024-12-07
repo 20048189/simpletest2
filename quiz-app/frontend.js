@@ -1,8 +1,8 @@
-const API_URL = "/api/questions";
+const API_URL = "https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/";
 
 // Fetch and display questions
 async function fetchQuestions() {
-  const response = await fetch(API_URL);
+  const response = await fetch('https://zany-fortnight-g47x79x697jj3974q-3000.app.github.dev/');
   const questions = await response.json();
   displayQuestions(questions);
 }
