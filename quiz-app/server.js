@@ -9,8 +9,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Serve static files (directly from the root)
-app.use(express.static(path.join(__dirname)));
+
 
 // Backend routes
 // Your CRUD routes here...
