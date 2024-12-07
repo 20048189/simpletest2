@@ -63,7 +63,32 @@ app.put("/api/questions/:id", (req, res) => {
     res.status(404).send("Question not found");
   }
 });
+app.post("/api/questions", (req, res) => {
+  const newQuestion = req.body;
 
+  // Read the current questions
+  fs.readFile("./questions.json", "utf-8", (err, data) => {
+      if (err) {
+          console.error("Error reading file:", err);
+          res.status(500).send("Server error");
+          return;
+      }
+
+      const questions = JSON.parse(data);
+      questions.push(newQuestion);
+
+      // Write the updated questions back to the file
+      fs.writeFile("./questions.json", JSON.stringify(questions, null, 2), (err) => {
+          if (err) {
+              console.error("Error writing file:", err);
+              res.status(500).send("Server error");
+              return;
+          }
+
+          res.status(201).send({ message: "Question added successfully" });
+      });
+  });
+});
 // Delete a question
 app.delete("/api/questions/:id", (req, res) => {
   const id = parseInt(req.params.id);
