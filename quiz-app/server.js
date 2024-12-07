@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
@@ -72,7 +72,7 @@ app.delete("/api/questions/:id", (req, res) => {
   saveQuestions();
   res.status(204).send();
 });
-const PORT = process.env.PORT || 4000;
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
